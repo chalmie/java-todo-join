@@ -88,4 +88,11 @@ public class TaskTest {
     myTask.save();
     assertFalse(myTask.isCompleted());
   }
+  @Test
+  public void complete_changeCompletedToTrue_true() {
+    Task myTask = new Task("Eat the banana");
+    myTask.save();
+    myTask.complete();
+    assertTrue(myTask.isCompleted());
+  }
 }

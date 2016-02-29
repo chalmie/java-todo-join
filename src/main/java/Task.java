@@ -19,6 +19,10 @@ public class Task {
     return completed;
   }
 
+  public void complete() {
+    this.completed = true;
+  }
+
   public Task(String description) {
     this.description = description;
     this.completed = false;

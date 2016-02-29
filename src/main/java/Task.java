@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Task {
   private int id;
   private String description;
+  private boolean completed;
 
   public int getId() {
     return id;
@@ -14,8 +15,13 @@ public class Task {
     return description;
   }
 
+  public boolean isCompleted() {
+    return completed;
+  }
+
   public Task(String description) {
     this.description = description;
+    this.completed = false;
   }
 
   @Override

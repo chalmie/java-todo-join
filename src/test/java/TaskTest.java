@@ -81,4 +81,11 @@ public class TaskTest {
     myTask.delete();
     assertEquals(myCategory.getTasks().size(), 0);
   }
+
+  @Test
+  public void isCompleted_returnsFalseWhenCreated_false() {
+    Task myTask = new Task("Eat the banana");
+    myTask.save();
+    assertFalse(myTask.isCompleted());
+  }
 }

@@ -115,5 +115,13 @@ public class App {
       response.redirect("/tasks");
       return null;
     });
+
+    post("/tasks/:id/complete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Task task = Task.find(Integer.parseInt(request.params("id")));
+      task.complete();
+      response.redirect("/tasks");
+      return null;
+    });
   }
 }

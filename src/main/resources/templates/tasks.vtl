@@ -1,5 +1,4 @@
 <h1>Task list!</h1>
-
 <p>Add a new task:</p>
 
 <form action="/tasks" method="post">
@@ -10,9 +9,9 @@
 </form>
 
 #foreach ($task in $tasks)
-  #if ($task.isCompleted())
-    <li><a href="/tasks/$task.getId()" class="completed">$task.getDescription()</a></li>
-  #else  
+  #if($task.isCompleted())
+    <li class="completed"><a href="/tasks/$task.getId()">$task.getDescription()</a></li>
+  #else
     <li><a href="/tasks/$task.getId()">$task.getDescription()</a></li>
   #end
 #end

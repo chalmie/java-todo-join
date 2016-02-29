@@ -91,21 +91,29 @@ public class App {
       return null;
     });
 
-    put("/tasks/:id", (request, response) -> {
+    get("/tasks/:id/edit", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Task task = Task.find(Integer.parseInt(request.params("id")));
-      String description = request.queryParams("description");
-      task.update("description");
-      model.put("template", "templates/task.vtl");
+      model.put("task", task);
+      model.put("template", "templates/task-edit.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    delete("/tasks/:id", (request, response) -> {
+    post("/tasks/:id/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Task task = Task.find(Integer.parseInt(request.params("id")));
+      String description = request.queryParams("description");
+      task.update(description);
+      response.redirect("/tasks");
+      return null;
+      });
+
+    post("/tasks/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Task task = Task.find(Integer.parseInt(request.params("id")));
       task.delete();
-      model.put("template", "templates/task.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+      response.redirect("/tasks");
+      return null;
+    });
   }
 }

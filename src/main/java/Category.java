@@ -75,7 +75,7 @@ public class Category {
       ArrayList<Task> tasks = new ArrayList<Task>();
 
       for (Integer taskId : taskIds) {
-          String taskQuery = "Select * From tasks WHERE id = :taskId";
+          String taskQuery = "SELECT * FROM tasks WHERE id = :taskId";
           Task task = con.createQuery(taskQuery)
             .addParameter("taskId", taskId)
             .executeAndFetchFirst(Task.class);
